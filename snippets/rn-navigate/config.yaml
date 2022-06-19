@@ -1,0 +1,11 @@
+---
+name: navigate
+description: navigate to a particular screen using react navigation
+---
+imports: ~
+props:
+  - navigation
+variables:
+  - name
+snippet: |
+  navigation.navigate("${name}");
