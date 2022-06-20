@@ -37,7 +37,7 @@ def process_args(args):
 def process_action(name, args):
     script_loc = "{}/actions/{}/main.py".format(APP_PATH, name)
     final_args = process_args(args)
-    subprocess.call([script_loc, *final_args])
+    subprocess.call(["python", script_loc, *final_args])
 
 
 def process_step(elem):
