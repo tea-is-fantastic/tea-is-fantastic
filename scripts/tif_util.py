@@ -35,7 +35,7 @@ def process_args(args):
 
 
 def process_action(name, args):
-    script_loc = "{}/actions/{}.py".format(APP_PATH, name)
+    script_loc = "{}/actions/{}/main.py".format(APP_PATH, name)
     final_args = process_args(args)
     subprocess.call([script_loc, *final_args])
 
@@ -47,7 +47,7 @@ def process_step(elem):
 
 
 def process_template(tempstr):
-    template = open_yaml("{}/templates/{}.yaml".format(APP_PATH, tempstr))
+    template = open_yaml("{}/templates/{}/main.yaml".format(APP_PATH, tempstr))
     pre = template["pre"]
     run = template["run"]
     post = template["post"]
