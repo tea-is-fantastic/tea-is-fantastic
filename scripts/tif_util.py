@@ -22,9 +22,9 @@ def process_args(args):
     output = List()
     for x in args:
         y = x.split("|")
-        if y[0] is "yaml":
+        if y[0] == "yaml":
             output.append(process_yaml(y[1], y[2]))
-        elif y[0] is "env":
+        elif y[0] == "env":
             output.append(os.environ[y[1]])
     return output
 
@@ -37,7 +37,7 @@ def process_action(name, args):
 
 def process_step(elem):
         step = elem["type"].split("|")
-        if step[0] is "action":
+        if step[0] == "action":
             process_action(step[1], elem["args"])
 
 
