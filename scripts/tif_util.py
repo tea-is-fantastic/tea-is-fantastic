@@ -18,7 +18,7 @@ def process_yaml(name, varname):
     keys = varname.split('.')
     yaml_loc = "{}/{}.yaml".format(DATA_PATH, name)
     with open(yaml_loc, "r") as stream:
-        test_yaml = yaml.safe_load(yaml_loc)
+        test_yaml = yaml.safe_load(stream)
     print(test_yaml)
     return nested_get(test_yaml, keys)
 
