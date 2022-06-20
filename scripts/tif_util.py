@@ -12,11 +12,14 @@ def nested_get(dic, keys):
     return dic
 
 
+def open_yaml(yaml_loc):
+    with open(yaml_loc, "r") as stream:
+        return yaml.safe_load(stream)
+
+
 def process_yaml(name, varname):
     keys = varname.split('.')
-    yaml_loc = "{}/{}.yaml".format(DATA_PATH, name)
-    with open(yaml_loc, "r") as stream:
-        test_yaml = yaml.safe_load(stream)
+    test_yaml = open_yaml("{}/{}.yaml".format(DATA_PATH, name))
     return nested_get(test_yaml, keys)
 
 
@@ -43,7 +46,8 @@ def process_step(elem):
             process_action(step[1], elem["args"])
 
 
-def process_template(template):
+def process_template(tempstr):
+    template = open_yaml(tempstr)
     pre = template["pre"]
     run = template["run"]
     post = template["post"]
