@@ -8,7 +8,7 @@ run: ~
 
 post:
   - type: action|temp-prod
-  - type: action|git-push
+  - type: action|github-push
     args:
       - yaml|app|token
       - yaml|app|repo
