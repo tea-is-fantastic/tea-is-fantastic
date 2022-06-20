@@ -1,0 +1,15 @@
+pre:
+  - type: action|expo-init
+    args:
+      - env|TEMP_PATH
+      - yaml|app|name
+
+run: ~
+
+post:
+  - type: action|temp-prod
+  - type: action|git-push
+    args:
+      - yaml|app|token
+      - yaml|app|repo
+      - env|OUTPUT_PATH
