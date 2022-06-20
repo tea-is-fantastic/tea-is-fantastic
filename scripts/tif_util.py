@@ -24,7 +24,7 @@ def process_yaml(name, varname):
 
 
 def process_args(args):
-    output = List()
+    output = []
     for x in args:
         y = x.split("|")
         if y[0] == "yaml":
