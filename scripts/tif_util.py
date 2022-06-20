@@ -48,9 +48,9 @@ def process_step(elem):
 
 def process_template(tempstr):
     template = open_yaml("{}/templates/{}/main.yaml".format(APP_PATH, tempstr))
-    pre = template["pre"]
-    run = template["run"]
-    post = template["post"]
+    pre = template["pre"] or []
+    run = template["run"] or []
+    post = template["post"] or []
 
     for x in pre:
         process_step(x)
