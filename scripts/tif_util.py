@@ -44,7 +44,7 @@ def process_step(elem):
         step = elem["type"].split("|")
         try:
             args = elem["args"]
-        except Error as e:
+        except:
             args = []
         if step[0] == "action":
             process_action(step[1], args)
