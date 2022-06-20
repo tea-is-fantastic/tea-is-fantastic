@@ -47,7 +47,7 @@ def process_step(elem):
 
 
 def process_template(tempstr):
-    template = open_yaml(tempstr)
+    template = open_yaml("{}/templates/{}.yaml".format(APP_PATH, tempstr))
     pre = template["pre"]
     run = template["run"]
     post = template["post"]
