@@ -17,9 +17,10 @@ def nested_get(dic, keys):
 def process_yaml(name, varname):
     keys = varname.split('.')
     yaml_loc = "{}/{}.yaml".format(DATA_PATH, name)
-    with open(yaml_loc) as f:
-        print(f)
+    with open(yaml_loc, "r") as f:
+        print(f.read())
     test_yaml = yaml.safe_load(yaml_loc)
+    print(test_yaml)
     return nested_get(test_yaml, keys)
 
 
