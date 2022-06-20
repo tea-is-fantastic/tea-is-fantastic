@@ -7,6 +7,7 @@ APP_PATH = os.environ['APP_PATH']
 
 
 def nested_get(dic, keys):
+    print('dic, keys')
     print(dic, keys)
     for key in keys:
         dic = dic[key]
@@ -14,8 +15,14 @@ def nested_get(dic, keys):
 
 
 def process_yaml(name, varname):
+    print('name, varname')
+    print(name, varname)
     keys = varname.split('.')
+    print('keys')
+    print(keys)
     test_yaml = yaml.safe_load("{}/{}.yaml".format(DATA_PATH, name))
+    print('test_yaml')
+    print(test_yaml)
     return nested_get(test_yaml, keys)
 
 
