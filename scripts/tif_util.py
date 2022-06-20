@@ -6,7 +6,8 @@ DATA_PATH = os.environ['DATA_PATH']
 APP_PATH = os.environ['APP_PATH']
 
 
-def nested_get(dic, keys):    
+def nested_get(dic, keys):
+    print(dic, keys)
     for key in keys:
         dic = dic[key]
     return dic
