@@ -5,4 +5,4 @@ TEMP_PATH = sys.argv[2]
 
 if __name__ == '__main__':
     os.chdir(TEMP_PATH)
-    subprocess.call(['npx', 'expo', 'init' '.' '--name', name, '--no-install', '--yes'])
+    os.system(['expo init . --name {} --no-install --yes'.format(name)])
