@@ -1,8 +1,8 @@
 pre:
   - type: action|expo-init
     args:
-      - env|TEMP_PATH
       - yaml|app|name
+      - env|TEMP_PATH
 
 run: ~
 
