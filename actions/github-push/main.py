@@ -18,6 +18,6 @@ if __name__ == '__main__':
     origin = repo.create_remote('origin', REPO_PATH)
     # repo.create_head('master', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     print("START")
-    origin.push(force=True, all=True)
+    origin.push(force=True, all=True).raise_if_error()
     print("FINISH")
 
