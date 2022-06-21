@@ -13,7 +13,7 @@ if __name__ == '__main__':
     os.system('git config --global user.name "Abhinandan"')
     os.system("git init .")
     os.system("git add -A")
-    os.system('git commit -am "woohoo"')
+    os.system('git commit -am "Tea Is Fantastic"')
     os.system('git branch -M main')
     os.system(f'git remote add origin {REPO_PATH}')
     os.system("git push --all -f")
