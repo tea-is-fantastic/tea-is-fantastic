@@ -10,7 +10,7 @@ REPO_PATH = f"https://{creds}@github.com/{repo}"
 if __name__ == '__main__':
     os.chdir(OUTPUT_PATH)
     os.system('git config --global user.email "tif@replyqa.com"')
-    os.system('git config --global user.name "Abhinandan"')
+    os.system('git config --global user.name "Abhinandan Varthaman"')
     os.system("git init .")
     os.system("git add -A")
     os.system('git commit -am "Tea Is Fantastic"')
