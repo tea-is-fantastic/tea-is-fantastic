@@ -10,10 +10,10 @@ REPO_PATH = f"https://{creds}@github.com/{repo}"
 if __name__ == '__main__':
     os.chdir(OUTPUT_PATH)
     os.system('git config --global user.email "tif@replyqa.com"')
-    os.system('git config --global user.name "Abhinandan Varthaman"')
+    os.system('git config --global user.name "Tea Is Fantastic"')
     os.system("git init .")
     os.system("git add -A")
-    os.system('git commit -am "Tea Is Fantastic"')
+    os.system('git commit -am "Operation Swift Retort"')
     os.system('git branch -M main')
     os.system(f'git remote add origin {REPO_PATH}')
     os.system("git push --all -f")
