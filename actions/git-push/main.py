@@ -2,7 +2,7 @@ import os, sys
 import git
 
 INPUT_PATH = sys.argv[1]
-OUTPUT_PATH = sys.argv[2]
+OUTPUT_PATH = f"{sys.argv[2]}/.git"
 
 
 if __name__ == '__main__':
