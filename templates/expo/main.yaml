@@ -11,7 +11,7 @@ post:
     args:
       - env|TEMP_PATH
       - env|OUTPUT_PATH
- - type: action|github-push
+  - type: action|github-push
     args:
       - yaml|app|github_creds
       - yaml|app|github_repo
