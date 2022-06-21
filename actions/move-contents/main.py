@@ -1,4 +1,4 @@
-import os, shutil
+import os, shutil, sys
 
 SRC_PATH = sys.argv[1]
 DEST_PATH = sys.argv[2]
