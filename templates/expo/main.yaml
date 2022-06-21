@@ -15,5 +15,4 @@ post:
     args:
       - yaml|app|github_creds
       - yaml|app|github_repo
-      - env|TEMP_PATH
       - env|OUTPUT_PATH
