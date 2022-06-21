@@ -1,7 +1,19 @@
-import os
-from distutils.dir_util import copy_tree
+import os, sys
+import git
 
-TEMP_PATH = os.environ['TEMP_PATH']
-OUTPUT_PATH = os.environ['OUTPUT_PATH']
+REPO_PATH = sys.argv[1]
+OUTPUT_PATH = sys.argv[2]
 
-copy_tree(TEMP_PATH, OUTPUT_PATH)
+
+if __name__ == '__main__':
+    repo = git.Repo.init(OUTPUT_PATH)
+    
+    for path, subdirs, files in os.walk(OUTPUT_PATH):
+        for name in files:
+            repo.index.add(os.path.join(path, name))
+
+    repo.index.commit("initial commit")
+    origin = repo.create_remote('origin', REPO_PATH)
+    repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
+    origin.push()
+

@@ -1,37 +1,21 @@
-import base64, sys, os
-from github import Github, InputGitTreeElement
+import os, sys
+import git
+
+creds = sys.argv[1]
+repo = sys.argv[2]
+OUTPUT_PATH = sys.argv[3]
+REPO_PATH = f"https://{creds}@github.com/{repo}"
 
 
-token = sys.argv[1]
-reposit = sys.argv[2]
-folder = sys.argv[3]
+if __name__ == '__main__':
+    repo = git.Repo.init(OUTPUT_PATH)
+    
+    for path, subdirs, files in os.walk(OUTPUT_PATH):
+        for name in files:
+            repo.index.add(os.path.join(path, name))
 
-g = Github(token)
-repo = g.get_user().get_repo(reposit)  # repo name
+    repo.index.commit("initial commit")
+    origin = repo.create_remote('origin', REPO_PATH)
+    repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
+    origin.push()
 
-file_list = []
-file_names = []
-
-for path, subdirs, files in os.walk(folder):
-    for name in files:
-        file_list.append(os.path.join(path, name))
-        file_names.append(name)
-
-commit_message = 'python commit'
-master_ref = repo.get_git_ref('heads/main')
-master_sha = master_ref.object.sha
-base_tree = repo.get_git_tree(master_sha)
-
-element_list = list()
-for i, entry in enumerate(file_list):
-    with open(entry) as input_file:
-        data = input_file.read()
-    if entry.endswith('.png'):  # images must be encoded
-        data = base64.b64encode(data)
-    element = InputGitTreeElement(file_names[i], '100644', 'blob', data)
-    element_list.append(element)
-
-tree = repo.create_git_tree(element_list, base_tree)
-parent = repo.get_git_commit(master_sha)
-commit = repo.create_git_commit(commit_message, tree, [parent])
-master_ref.edit(commit.sha)
