@@ -1,21 +1,21 @@
 FROM nikolaik/python-nodejs:latest
 
-USER pn
-
-RUN yarn global add expo-cli
+RUN npm i -g --unsafe-perm expo-cli
 RUN npm cache clean --force && yarn cache clean
 
-VOLUME ./output /home/pn/output
-VOLUME ./data /home/pn/data
+USER pn
 
-ARG TEMP_PATH=/home/pn/temp
-ARG OUTPUT_PATH=/home/pn/output
-ARG DATA_PATH=/home/pn/data
-
+ADD ./data /home/pn/data
 ADD ./app /home/pn/app
+
+RUN mkdir /home/pn/temp
+VOLUME ./output /home/pn/output
+
 WORKDIR /home/pn/app
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+#RUN pip install --no-cache-dir --upgrade pip && \
+#    pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "./scripts/main.py"]
+CMD ["python", "/home/pn/app/scripts/main.py"]
