@@ -15,6 +15,7 @@ if __name__ == '__main__':
     repo.index.commit("initial commit")
     origin = repo.create_remote('origin', OUTPUT_PATH)
     print([r for r in origin.refs])
-    repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
+    # repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
+    repo.checkout()
     origin.push(force=True, all=True)
 
