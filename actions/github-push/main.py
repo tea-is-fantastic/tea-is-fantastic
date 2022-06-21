@@ -9,6 +9,8 @@ REPO_PATH = f"https://{creds}@github.com/{repo}"
 
 if __name__ == '__main__':
     os.chdir(OUTPUT_PATH)
+    os.system('git config --global user.email "tif@replyqa.com"')
+    os.system('git config --global user.name "Abhinandan"')
     os.system("git init .")
     os.system(f'git remote add origin {REPO_PATH}')
     os.system("git add -A")
