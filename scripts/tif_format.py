@@ -1,6 +1,6 @@
 import os
 from string import Formatter
-from tif_yaml import process_yaml
+from tif_yaml import yaml_extract
 
 class TeaFormatter(Formatter):
     def __init__(self):
@@ -13,7 +13,7 @@ class TeaFormatter(Formatter):
             except KeyError:
                 y = key.split("|")
                 if y[0] == "yaml":
-                    return process_yaml(y[1], y[2])
+                    return yaml_extract(y[1], y[2])
                 elif y[0] == "env":
                     return os.environ[y[1]]
         else:
