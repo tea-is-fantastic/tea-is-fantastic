@@ -13,9 +13,13 @@ app_yaml = open_yaml(f"{DATA_PATH}/app.yaml")
 assets_yaml = open_yaml(f"{DATA_PATH}/assets.yaml")
 
 
-def open_yaml_raw(yaml_loc):
+def open_raw(yaml_loc):
     with open(yaml_loc, "r") as stream:
         return stream.read()
+
+
+def yaml_dict(stream):
+    return yaml.safe_load(stream)
 
 
 def name_to_yaml(name):
@@ -31,7 +35,7 @@ def nested_get(dic, keys):
     return dic
 
 
-def process_yaml(name, varname):
+def yaml_extract(name, varname):
     keys = varname.split('.')
     test_yaml = name_to_yaml(name)
     return nested_get(test_yaml, keys)
