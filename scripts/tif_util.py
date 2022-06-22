@@ -2,7 +2,7 @@ import os
 import yaml
 import subprocess
 from tif_yaml import open_yaml
-from yaml_format import TeaFormatter
+from tif_format import TeaFormatter
 
 DATA_PATH = os.environ['DATA_PATH']
 APP_PATH = os.environ['APP_PATH']
