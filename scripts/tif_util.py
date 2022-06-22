@@ -1,7 +1,7 @@
 import os
 import yaml
 import subprocess
-from tif_yaml import open_yaml
+from tif_yaml import open_yaml_raw
 from tif_format import TeaFormatter
 
 DATA_PATH = os.environ['DATA_PATH']
@@ -22,7 +22,7 @@ def process_step(elem):
 
 
 def process_template(tempstr):
-    raw_template = open_yaml("{}/templates/{}/main.yaml".format(APP_PATH, tempstr))
+    raw_template = open_yaml_raw("{}/templates/{}/main.yaml".format(APP_PATH, tempstr))
     template = tea_format.format(raw_template)
     pre = template["pre"] or []
     run = template["run"] or []

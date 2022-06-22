@@ -8,8 +8,14 @@ def open_yaml(yaml_loc):
     with open(yaml_loc, "r") as stream:
         return yaml.safe_load(stream)
 
+
 app_yaml = open_yaml(f"{DATA_PATH}/app.yaml")
 assets_yaml = open_yaml(f"{DATA_PATH}/assets.yaml")
+
+
+def open_yaml_raw(yaml_loc):
+    with open(yaml_loc, "r") as stream:
+        return stream.read()
 
 
 def name_to_yaml(name):
