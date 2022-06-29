@@ -1,0 +1,18 @@
+pre:
+  - action: rn-init
+    args:
+      - {yaml|app|name}
+      - {env|TEMP_PATH}
+
+run: ~
+
+post:
+  - action: move-contents
+    args:
+      - {env|TEMP_PATH}
+      - {env|OUTPUT_PATH}
+  - action: github-push
+    args:
+      - {yaml|app|github_creds}
+      - {yaml|app|github_repo}
+      - {env|OUTPUT_PATH}
